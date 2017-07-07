@@ -12,12 +12,14 @@ window.fbAsyncInit = function() {
 
 
 $(document).on('fbload', function () {
-    FB.login(function(response) {
-        if (response.status === 'connected') {
-            console.log('login');
-        } else {
-            console.log('not login');
-        }
+    $('.fb-login-button').click(function () {
+        FB.login(function(response) {
+            if (response.status === 'connected') {
+                console.log('login');
+            } else {
+                console.log('not login');
+            }
+        });
     });
 
     FB.getLoginStatus(function(response) {
@@ -26,7 +28,8 @@ $(document).on('fbload', function () {
 
     function statusChangeCallback(response) {
         if (response.status === 'connected') {
-            location.replace('/comment');
+            console.log(response);
+            //location.replace('/comment');
         } else {
             console.log('not login');
         }

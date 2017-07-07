@@ -12,14 +12,16 @@ $host = $_SERVER['HTTP_HOST'];
 
 $path = strtolower(substr(preg_replace('/\..*/', '', $_SERVER['REQUEST_URI']), 1));
 
-if (!file_exists(FOLDER . '/app/etc/db.xml')) {
-    require_once FOLDER . '/install.php';
-    die();
-}
-
 require_once  FOLDER . '/app/Autoload.php';
+require_once  FOLDER . '/vendor/Facebook/autoload.php';
 
 Autoload::init();
+
+if (!file_exists(FOLDER . '/app/etc/db.xml')) {
+    $setup = new Controller\Install();
+    $setup->execute();
+    die();
+}
 
 switch ($path) {
     case 'comment':

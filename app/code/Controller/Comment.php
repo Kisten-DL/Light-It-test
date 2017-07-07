@@ -7,10 +7,15 @@
  */
 namespace Controller;
 
+use Helper\Facebook;
+
 Class Comment
 {
     public function execute ()
     {
-        echo 'comment';
+        $helper = new Facebook();
+        $userId = $helper->getUserId();
+        $block = new \View\Comment\Comment($userId);
+        $block->render();
     }
 }

@@ -54,6 +54,7 @@ class Template
         $this->addJs('lib/js/bootstrap.min.js');
         $this->addCss('lib/css/bootstrap.min.css');
         $this->addCss('lib/css/bootstrap-theme.min.css');
+        $this->addCss('skin/css/style.css');
     }
 
     public function addJs ($js)
@@ -76,8 +77,14 @@ class Template
         return $this->_headJs;
     }
 
-    public function addBodyContent($content)
+    public function setBodyContent($content)
     {
         $this->_bodyContent = $content;
+    }
+
+    public function getWarningHtml($text)
+    {
+        $html = '<div class="alert alert-warning"><strong>' . $text . '</strong></div>';
+        return $html;
     }
 }
