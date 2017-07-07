@@ -19,15 +19,17 @@ if (!file_exists(FOLDER . '/app/etc/db.xml')) {
 
 require_once  FOLDER . '/app/Autoload.php';
 
+Autoload::init();
+
 switch ($path) {
     case 'comment':
-        $controller = \Main\Autoload::getClass('Controller/Comment');
+        $controller = new \Controller\Comment();
         $controller->execute();
         break;
     case '':
     case 'index':
     case 'login':
-        $controller = \Main\Autoload::getClass('Controller/Login');
+        $controller = new \Controller\Login();
         $controller->execute();
         break;
     case 'setup':

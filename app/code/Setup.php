@@ -5,8 +5,6 @@
  * Date: 06.07.17
  * Time: 22:03
  */
-namespace Main;
-
 use Helper\XML;
 
 class Setup

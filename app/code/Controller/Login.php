@@ -11,6 +11,7 @@ Class Login
 {
     public function execute ()
     {
-        echo 'login';
+        $block = new \View\Login\Login();
+        $block->render();
     }
 }
