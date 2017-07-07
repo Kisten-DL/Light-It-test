@@ -11,11 +11,6 @@ use DOMDocument;
 
 class XML
 {
-    public function __construct()
-    {
-
-    }
-
     public function createDataBaseXML($dbName, $serverName = 'localhost', $user = 'root', $password = '')
     {
         $xml = new DOMDocument('1.0', 'utf-8');
@@ -31,5 +26,10 @@ class XML
         $root->appendChild($db);
         $xml->appendChild($root);
         return $xml->save($_SERVER['DOCUMENT_ROOT'] . "/app/etc/db.xml");
+    }
+
+    public function test ()
+    {
+        return 'eeee';
     }
 }

@@ -5,8 +5,6 @@
  * Date: 06.07.17
  * Time: 19:35
  */
-use Controller\Comment;
-use Controller\Login;
 
 define('FOLDER', getcwd());
 
@@ -19,21 +17,22 @@ if (!file_exists(FOLDER . '/app/etc/db.xml')) {
     die();
 }
 
+require_once  FOLDER . '/app/Autoload.php';
+
 switch ($path) {
     case 'comment':
-        require_once  FOLDER . '/app/code/Controller/Comment.php';
-        $controller = new Comment();
+        $controller = \Main\Autoload::getClass('Controller/Comment');
         $controller->execute();
         break;
     case '':
     case 'index':
     case 'login':
-        require_once FOLDER . '/app/code/Controller/Login.php';
-        $controller = new Login();
+        $controller = \Main\Autoload::getClass('Controller/Login');
         $controller->execute();
         break;
     case 'setup':
-        require_once FOLDER . '/app/code/Setup.php';
+    case 'install':
+        require_once FOLDER . 'install.php';
         break;
     default :
         require_once FOLDER . '/error/404.php';

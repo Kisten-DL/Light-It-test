@@ -32,7 +32,6 @@ class Setup
     )";
 
         if ($conn->query($sql) === TRUE) {
-            require_once('app/code/Helper/XML.php');
             $xml = new XML();
             $xml->createDataBaseXML($dbName, $serverName, $userName, $userPassword);
             echo 'success';

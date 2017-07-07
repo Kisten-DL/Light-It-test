@@ -9,14 +9,8 @@ namespace Controller;
 
 Class Login
 {
-    public function name ()
-    {
-        return 'name';
-    }
-
     public function execute ()
     {
-        $name = self::name();
-        echo 'login' . $name;
+        echo 'login';
     }
 }

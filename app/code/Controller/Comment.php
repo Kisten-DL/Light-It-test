@@ -9,14 +9,8 @@ namespace Controller;
 
 Class Comment
 {
-    public function name ()
-    {
-        return 'name';
-    }
-
     public function execute ()
     {
-        $name = self::name();
-        echo 'comment' . $name;
+        echo 'comment';
     }
 }
