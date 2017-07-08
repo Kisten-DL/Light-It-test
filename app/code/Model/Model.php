@@ -58,9 +58,9 @@ Class Model
         }
     }
 
-    public function loadCollection($cond = null, $field = null)
+    public function loadCollection($cond = null, $fields = null)
     {
-        $result = $this->_resourceModel->loadCollection($cond, $field);
+        $result = $this->_resourceModel->loadCollection($cond, $fields);
         $this->_collectionData = $result;
         return $this;
     }
