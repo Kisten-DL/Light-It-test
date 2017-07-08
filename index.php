@@ -12,22 +12,26 @@ $host = $_SERVER['HTTP_HOST'];
 
 $path = strtolower(substr(preg_replace('/\..*/', '', $_SERVER['REQUEST_URI']), 1));
 
+require_once  FOLDER . '/app/Autoload.php';
+require_once  FOLDER . '/vendor/Facebook/autoload.php';
+
+Autoload::init();
+
 if (!file_exists(FOLDER . '/app/etc/db.xml')) {
-    require_once FOLDER . '/install.php';
+    $setup = new Controller\Install();
+    $setup->execute();
     die();
 }
 
-require_once  FOLDER . '/app/Autoload.php';
-
 switch ($path) {
     case 'comment':
-        $controller = \Main\Autoload::getClass('Controller/Comment');
+        $controller = new \Controller\Comment();
         $controller->execute();
         break;
     case '':
     case 'index':
     case 'login':
-        $controller = \Main\Autoload::getClass('Controller/Login');
+        $controller = new \Controller\Login();
         $controller->execute();
         break;
     case 'setup':

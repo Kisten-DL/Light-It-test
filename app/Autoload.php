@@ -5,14 +5,26 @@
  * Date: 07.07.17
  * Time: 14:27
  */
-namespace Main;
-
 class Autoload
 {
-    public static function getClass($name)
+    public static $loader;
+
+    public static function init()
     {
-        require 'code/' .$name . '.php';
-        $className = str_replace('/', '\\', $name);
-        return new  $className ;
+        if (self::$loader == NULL)
+            self::$loader = new self();
+
+        return self::$loader;
+    }
+
+    public function __construct()
+    {
+        spl_autoload_register(array($this, 'controller'));
+    }
+
+    public function controller($className)
+    {
+        $fileName = __DIR__ . '/code/' .  str_replace('\\', '/', $className) . ".php";
+        require_once($fileName);
     }
 }
