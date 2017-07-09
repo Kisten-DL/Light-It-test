@@ -1,3 +1,12 @@
 .login-container {
     margin-top:100px;
 }
+
+.add-comment {
+    margin-top:50px;
+    margin-bottom:100px;
+}
+
+.answer {
+    cursor: pointer;
+}
