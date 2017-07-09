@@ -24,10 +24,10 @@ class Template
     {
         $html = '<head>';
         foreach ($this->_headJs as $js) {
-            $html .= '<script type="text/javascript" src="' . $js . '"></script>';
+            $html .= '<script type="text/javascript" src="/' . $js . '"></script>';
         }
         foreach ($this->_headCss as $css) {
-            $html .= '<link rel="stylesheet" href="' . $css . '">';
+            $html .= '<link rel="stylesheet" href="/' . $css . '">';
         }
         $html .= '</head>';
         return $html;
@@ -45,6 +45,13 @@ class Template
     {
         $html = $this->_getHeadHtml();
         $html .= $this->_getBodyHtml();
+        $html .= $this->_getFooterHtml();
+        return $html;
+    }
+
+    protected function _getFooterHtml()
+    {
+        $html = '<footer class="footer"><div class="container"><p class="text-muted"><strong>Kisten D.L</strong> | <strong>2017</strong> | <a href="https://github.com/Kisten-DL/Light-It-test">GitHub</a></p></div></footer>';
         return $html;
     }
 

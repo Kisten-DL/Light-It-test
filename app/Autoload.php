@@ -25,6 +25,10 @@ class Autoload
     public function controller($className)
     {
         $fileName = __DIR__ . '/code/' .  str_replace('\\', '/', $className) . ".php";
-        require_once($fileName);
+        if (file_exists($fileName)) {
+            require_once($fileName);
+        } else {
+            header('Location: error/404.php');
+        }
     }
 }

@@ -68,7 +68,6 @@ Class Model
         $sql .= ' VALUES (' . implode(', ', $dataValue) . ')';
         $connection->query($sql);
         $result = $this->load($connection->insert_id);
-        $this->closeConnection();
         return $result;
     }
 

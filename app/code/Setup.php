@@ -9,6 +9,11 @@ use Helper\XML;
 
 class Setup
 {
+    public function __construct()
+    {
+
+    }
+
     public function Setup()
     {
         $data = $_POST;
@@ -19,7 +24,7 @@ class Setup
 
         $conn = new \mysqli($serverName, $userName, $userPassword, $dbName);
         if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+            return "Connection failed: " . $conn->connect_error;
         }
 
         $sql = "CREATE TABLE Comments (
@@ -30,14 +35,16 @@ class Setup
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
 
-        if ($conn->query($sql) === TRUE) {
+        $result = $conn->query($sql);
+        if ($result === TRUE) {
             $xml = new XML();
             $xml->createDataBaseXML($dbName, $serverName, $userName, $userPassword);
-            echo 'success';
+            $conn->close();
+            return true;
         } else {
-            echo "Error creating table: " . $conn->error;
+            $conn->close();
+            return "Error creating table: " . $conn->error;
         }
-        $conn->close();
     }
 }
 

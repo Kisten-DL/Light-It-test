@@ -48,7 +48,7 @@ Class Comment extends Template
 
     protected function _getAddCommentHtml()
     {
-        $html = '<div class="form-group"><label for="comment">Comment:</label><textarea class="form-control" rows="5" id="comment" name="comment"></textarea></div></div>';
+        $html = '<div class="form-group"><label for="comment">Comment:</label><textarea class="form-control" required rows="5" id="comment" name="comment"></textarea></div></div>';
         if (is_null($this->_fbUser)) {
             $html .= $this->getWarningHtml('Please <a href="/login">Login</a> First');
         } else {
@@ -61,9 +61,10 @@ Class Comment extends Template
     protected function _prepareHtml()
     {
         $this->_modifyHeader();
+        $this->addJs('lib/js/validator.min.js');
         $html = $this->_getNavBarHtml();
         $html .= $this->getFacebookApiHtml();
-        $html .= '<div class="container add-comment"><div class="row add-form"><form id="add-form"><div class="col-sm-12">';
+        $html .= '<div class="container add-comment"><div class="row add-form"><form id="add-form" data-toggle="validator" role="form"><div class="col-sm-12">';
         $html .= $this->_getAddCommentHtml();
         $html .= '</form></div></div>';
         $html .= '<div class="container comment-container"><div class="row"><table class="table tree"><tbody>';
@@ -79,7 +80,7 @@ Class Comment extends Template
 
     protected function _getNavBarHtml()
     {
-        $html = '<nav class="navbar navbar-inverse"><div class="navbar-header"><a class="navbar-brand" href="/login">Test</a></div><div class="container-fluid"><ul class="nav navbar-nav navbar-right"><li>';
+        $html = '<nav class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-header"><a class="navbar-brand" href="/login">Test</a></div><div class="container-fluid"><ul class="nav navbar-nav navbar-right"><li>';
         $html .= $this->getFacebookButtonHtml();
         $html .= '</li></ul></div></nav>';
         return $html;
@@ -101,7 +102,7 @@ Class Comment extends Template
         if (!is_null($data['parent'])) {
             $html .= ' treegrid-parent-' .$data['parent'];
         } else {
-            $html .= ' treegrid-not-parent-';
+            $html .= ' treegrid-not-parent';
         }
 
         $html .= '">';

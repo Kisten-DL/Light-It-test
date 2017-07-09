@@ -17,8 +17,27 @@ Class Save
         $post = $_POST;
         $model = new Comment();
         $helper = new Facebook();
-        $model->setData($post);
-        $model->setData('user_id', $helper->getUserId());
-        $model->save();
+        if (!array_key_exists('comment', $post)) {
+            $response = array(
+                'error' => 'yes',
+                'text' => 'please set comment'
+            );
+        } else {
+            try {
+                $model->setData($post);
+                $model->setData('user_id', $helper->getUserId());
+                $model->save();
+                $response = array(
+                    'error' => 'no',
+                );
+            } catch (\mysqli_sql_exception $e) {
+                $response = array(
+                    'error' => 'yes',
+                    'text' => $e->getMessage()
+                );
+            }
+        }
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($response);
     }
 }

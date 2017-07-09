@@ -14,11 +14,10 @@ Class Login extends Template
     public function render()
     {
         $this->addJs('skin/js/facebook.js');
-        $html = '<div class="container login-container"><div class="row"><div class="col-md-4 col-sm-4 col-xs-4 col-lg-4 col-lg-offset-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4"> ';
+        $html = '<div class="container login-container"><div class="row"><div class="col-xs-12>"><p><h1>Hi, This is a demo site, If you enter, you can leave comments.<p>Enjoy</p></h1></p></div><div class="col-xs-6 col-xs-offset-4 facebook-button-container">';
         $html .= $this->getFacebookApiHtml();
         $html .= $this->getFacebookButtonHtml();
         $html .= '<div class="clearfix"></div>';
-        $html .= $this->getWarningHtml('Please Log In With You Facebook Account');
         $html .= '</div></div></div>';
         $this->setBodyContent($html);
         $html = $this->getHtml();

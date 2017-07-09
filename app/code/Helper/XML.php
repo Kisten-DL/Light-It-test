@@ -27,9 +27,4 @@ class XML
         $xml->appendChild($root);
         return $xml->save($_SERVER['DOCUMENT_ROOT'] . "/app/etc/db.xml");
     }
-
-    public function test ()
-    {
-        return 'eeee';
-    }
 }

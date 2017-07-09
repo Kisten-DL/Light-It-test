@@ -20,7 +20,13 @@ Class Install
             $block->render();
         } else {
             $setup = new \Setup();
-            $setup->Setup();
+            $result = $setup->Setup();
+            if ($result === true) {
+                $block = new \View\Success\Success();
+                $block->render();
+            } else {
+                echo $result;
+            }
         }
     }
 }
