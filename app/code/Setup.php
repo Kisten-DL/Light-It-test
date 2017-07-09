@@ -23,11 +23,11 @@ class Setup
         }
 
         $sql = "CREATE TABLE Comments (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    entity_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     comment VARCHAR(30) NOT NULL,
     parent INT(10),
     user_id INT(20) NOT NULL,
-    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
 
         if ($conn->query($sql) === TRUE) {

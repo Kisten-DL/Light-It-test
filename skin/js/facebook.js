@@ -29,7 +29,7 @@ $(document).on('fbload', function () {
     function statusChangeCallback(response) {
         if (response.status === 'connected') {
             console.log(response);
-            //location.replace('/comment');
+            location.replace('/comment');
         } else {
             console.log('not login');
         }
