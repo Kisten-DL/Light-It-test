@@ -8,6 +8,7 @@
 namespace Controller;
 
 use Model\Comment;
+use Helper\Facebook;
 
 Class Save
 {
@@ -15,7 +16,9 @@ Class Save
     {
         $post = $_POST;
         $model = new Comment();
+        $helper = new Facebook();
         $model->setData($post);
+        $model->setData('user_id', $helper->getUserId());
         $model->save();
     }
 }

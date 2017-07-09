@@ -40,4 +40,4 @@ switch ($path) {
         $controller->execute();
 }
 
-//die();
+die();

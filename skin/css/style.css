@@ -3,10 +3,46 @@
 }
 
 .add-comment {
-    margin-top:50px;
-    margin-bottom:100px;
+    margin-top:40px;
+    margin-bottom:80px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-color: #f5f8ef;
 }
 
 .answer {
     cursor: pointer;
+}
+
+.delete {
+    cursor: pointer;
+    color: #ff4e42;
+}
+
+.separator {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+body {
+    background-image: url('../image/images.jpg');
+    background-repeat: repeat;
+}
+
+/*.container {*/
+    /*background-color: #f5f8ef;*/
+/*}*/
+
+.comment-container {
+    margin-bottom:80px;
+    background-color: #f5f8ef;
+}
+
+td {
+    background-color: #f5f8ef;
+    padding: 10px;
+}
+
+.treegrid-not-parent {
+    margin-top: 5px;
 }

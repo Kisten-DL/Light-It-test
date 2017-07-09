@@ -6,32 +6,15 @@ window.fbAsyncInit = function() {
         xfbml      : true,
         version    : 'v2.9'
     });
-
-    $(document).trigger('fbload');  //  <---- THIS RIGHT HERE TRIGGERS A CUSTOM EVENT CALLED 'fbload'
+    $(document).trigger('fbload');
 };
 
-
 $(document).on('fbload', function () {
-    $('.fb-login-button').click(function () {
-        FB.login(function(response) {
-            if (response.status === 'connected') {
-                console.log('login');
-            } else {
-                console.log('not login');
-            }
-        });
+    FB.Event.subscribe('auth.logout', function() {
+        location.reload();
     });
 
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
+    FB.Event.subscribe('auth.login', function() {
+        location.reload();
     });
-
-    function statusChangeCallback(response) {
-        if (response.status === 'connected') {
-            console.log(response);
-            location.replace('/comment');
-        } else {
-            console.log('not login');
-        }
-    }
 });

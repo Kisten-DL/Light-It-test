@@ -100,4 +100,10 @@ class Template
         $html = '<div class="alert alert-warning"><strong>' . $text . '</strong></div>';
         return $html;
     }
+
+    public function getFacebookButtonHtml()
+    {
+        $html = '<div class="fb-login-button" style="margin-top: 5px; margin-right: 5px" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>';
+        return $html;
+    }
 }

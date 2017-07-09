@@ -26,6 +26,7 @@ Class Model
     protected $_condRule = array(
         'null' => 'IS NULL',
         'not_null' => 'IS NOT NULL',
+        'def' => '='
     );
 
     public function __construct()
@@ -69,11 +70,6 @@ Class Model
         $result = $this->load($connection->insert_id);
         $this->closeConnection();
         return $result;
-    }
-
-    public function update($obj)
-    {
-        return $obj;
     }
 
     public function connection()
@@ -144,8 +140,15 @@ Class Model
     {
         $select = '';
         foreach ($cond as $key => $value) {
-            $cond = $this->_condRule[$value];
-            $select .= "$key $cond";
+            if ($key == 'def') {
+                foreach ($value as $condKey => $condValue) {
+                    $cond = $this->_condRule[$key];
+                    $select .= "$condKey $cond $condValue";
+                }
+            } else {
+                $cond = $this->_condRule[$value];
+                $select .= "$key $cond";
+            }
         }
         return $select;
     }
