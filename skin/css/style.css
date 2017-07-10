@@ -82,3 +82,7 @@ td {
 .container .text-muted {
     margin: 20px 0;
 }
+
+.success {
+    background-color: #84c76f;
+}

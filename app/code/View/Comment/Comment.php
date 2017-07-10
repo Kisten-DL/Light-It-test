@@ -103,7 +103,7 @@ Class Comment extends Template
         $html .= '<div class="container add-comment"><div class="row add-form"><form id="add-form" data-toggle="validator" role="form"><div class="col-sm-12">';
         $html .= $this->_getAddCommentHtml();
         $html .= '</form></div></div>';
-        $html .= '<div class="container comment-container"><div class="row"><table class="table tree"><tbody>';
+        $html .= '<div class="container comment-container"><div class="row"><div class=""><button class="btn btn-primary show-all">Show All</button></div><div class="clearfix"></div><table class="table tree"><tbody>';
         foreach ($this->_dataParentComment as $data) {
             $html .= $this->_getCommentHtml($data);
         }
@@ -156,11 +156,11 @@ Class Comment extends Template
         }
 
         $html .= '">';
-        $html .= '<td><input class="entity_id" type="hidden" value="' . $data['entity_id'] . '" name="entity_id"></input><strong>' . $data['create_at'] . '</strong><span class="separator">|</span><span class="comment-text">' . addslashes($data['comment']) . '</span><a class="text-right"><span class="pull-right answer">Answer</span></a>';
+        $html .= '<td><input class="entity_id" type="hidden" value="' . $data['entity_id'] . '" name="entity_id"></input><strong>' . $data['create_at'] . '</strong></td><td><span class="comment-text">' . addslashes($data['comment']) . '</span></td><td><a class="text-right"><span class="pull-right answer">Answer</span></a>';
         if ($data['user_id'] == $this->_fbUser) {
             $html .= '<span class="pull-right separator">|</span><a class="text-right"><span class="pull-right delete">Delete</span></a>';
         }
-
+        $html .= $this->_getLikeButtonHtml($data['entity_id']);
         $html .= '</td></tr>';
         $child = $this->_getChild($data['entity_id']);
         foreach ($child as $data) {
@@ -185,5 +185,17 @@ Class Comment extends Template
             }
         }
         return $result;
+    }
+
+    /**
+     * added facebook like button for current comment
+     *
+     * @param $id
+     * @return string
+     */
+    protected function _getLikeButtonHtml($id)
+    {
+        $html = '<span class="separator pull-right">|</span><div class="fb-like pull-right" data-href="http://kistendltest.loc/comment/'.$id.'" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>';
+        return $html;
     }
 }
