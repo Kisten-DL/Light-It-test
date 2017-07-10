@@ -1,3 +1,6 @@
+/**
+ * Facebook api js
+ */
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '381912872206892',

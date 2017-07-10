@@ -1,5 +1,5 @@
 /**
- * Created by kisten on 09.07.17.
+ * install page js
  */
 $(document).ready(function () {
     $("#myForm").validator();

@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kisten
- * Date: 06.07.17
- * Time: 22:03
+ * PHP Version 5.5.9
+ *
+ * This is Setup Class for create core tables
  */
 use Helper\XML;
 

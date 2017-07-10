@@ -1,9 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kisten
- * Date: 07.07.17
- * Time: 19:37
+ * PHP Version 5.5.9
+ *
+ * This is Install View
+ * This Class render install page html
  */
 namespace View\Install;
 
@@ -11,6 +11,9 @@ use View\Template;
 
 Class Install extends Template
 {
+    /**
+     * Render page
+     */
     public function render()
     {
         $this->addJs('lib/js/validator.min.js');
@@ -23,7 +26,7 @@ Class Install extends Template
             . '<div class="form-group"><label for="base" class="control-label">Data Base Name</label><input type="text" name="db_name" id="base" class="form-control" data-error="This is required field" required><div class="help-block with-errors"></div></div>'
             . '<button type="submit" class="btn btn-primary btn-lg">Submit</button>'
             . '</form>';
-        $html .='</div></div></div>';
+        $html .= '</div></div></div>';
         $this->setBodyContent($html);
         $html = $this->getHtml();
         echo $html;

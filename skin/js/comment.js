@@ -1,5 +1,5 @@
 /**
- * Created by kisten on 08.07.17.
+ * Comment page js
  */
 $(document).ready(function() {
     $('.tree').treegrid({
@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     var template = '<form class="comment-answer-form"><div class="form-group"><label for="comment">Comment:</label><textarea class="form-control" rows="2" id="comment" name="comment"></textarea></div>';
 
-    var alertErrorTemplate = '<div class="alert alert-danger fade in alert-dismissable"><strong>{{text}}</strong></div>';
+    var alertErrorTemplate = '<div class="alert alert-danger fade in alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>{{text}}</strong></div>';
 
     $(document).on("click", '.answer', function () {
         var thisTemplate = template;
@@ -88,15 +88,15 @@ $(document).ready(function() {
                 if (data.error == 'no') {
                     location.reload();
                 } else {
-                    pos.parent().parent().parent().parent().find('.alert-danger').remove();
+                    pos.parent().parent().find('.alert-danger').remove();
                     var template = alertErrorTemplate.replace('{{text}}', data.text);
-                    pos.parent().parent().parent().before(template);
+                    pos.parent().after(template);
                 }
             },
             error: function (error, data) {
-                pos.parent().parent().parent().parent().find('.alert-danger').remove();
+                pos.parent().parent().find('.alert-danger').remove();
                 var template = alertErrorTemplate.replace('{{text}}', 'Some Server Error');
-                pos.parent().parent().parent().before(template);
+                pos.parent().before(template);
             }
         })
     });

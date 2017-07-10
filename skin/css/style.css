@@ -1,6 +1,9 @@
 .login-container {
     margin-top:100px;
-    background-color: #f5f8ef;
+    background-color: #f8f3e1;
+    padding: 30px;
+    border: 1px solid transparent;
+    border-radius: 5px;
 }
 
 html {

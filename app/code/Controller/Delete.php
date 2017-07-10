@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kisten
- * Date: 09.07.17
- * Time: 14:40
+ * PHP Version 5.5.9
+ *
+ * This is Ajax Delete Controller
  */
 namespace Controller;
 
@@ -12,6 +11,9 @@ use Model\Comment;
 
 Class Delete
 {
+    /**
+     * delete comment and return json response
+     */
     public function execute()
     {
         $helper = new Facebook();
