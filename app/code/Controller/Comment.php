@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kisten
- * Date: 06.07.17
- * Time: 20:14
+ * PHP Version 5.5.9
+ *
+ * This is Comment Controller
  */
 namespace Controller;
 
@@ -11,6 +10,9 @@ use Helper\Facebook;
 
 Class Comment
 {
+    /**
+     * Create comment page
+     */
     public function execute ()
     {
         $helper = new Facebook();

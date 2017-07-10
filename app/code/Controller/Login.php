@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kisten
- * Date: 06.07.17
- * Time: 21:19
+ * PHP Version 5.5.9
+ *
+ * This is Login Controller
  */
 namespace Controller;
 
@@ -11,6 +10,9 @@ use Helper\Facebook;
 
 Class Login
 {
+    /**
+     * Create login page
+     */
     public function execute ()
     {
         $helper = new Facebook();

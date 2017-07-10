@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kisten
- * Date: 06.07.17
- * Time: 22:45
+ * PHP Version 5.5.9
+ *
+ * This is XML Helper
  */
 namespace Helper;
 
@@ -11,6 +10,15 @@ use DOMDocument;
 
 class XML
 {
+    /**
+     * create db.xml this file contains information about data base connection setting
+     *
+     * @param $dbName
+     * @param string $serverName
+     * @param string $user
+     * @param string $password
+     * @return int
+     */
     public function createDataBaseXML($dbName, $serverName = 'localhost', $user = 'root', $password = '')
     {
         $xml = new DOMDocument('1.0', 'utf-8');
@@ -26,10 +34,5 @@ class XML
         $root->appendChild($db);
         $xml->appendChild($root);
         return $xml->save($_SERVER['DOCUMENT_ROOT'] . "/app/etc/db.xml");
-    }
-
-    public function test ()
-    {
-        return 'eeee';
     }
 }
