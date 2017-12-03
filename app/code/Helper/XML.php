@@ -19,6 +19,7 @@ class XML
      * @param string $password
      * @return int
      */
+
     public function createDataBaseXML($dbName, $serverName = 'localhost', $user = 'root', $password = '', $hash = null)
     {
         $xml = new DOMDocument('1.0', 'utf-8');
@@ -28,14 +29,17 @@ class XML
         $pass = $xml->createElement('password', $password);
         $host = $xml->createElement('host', $serverName);
         $db = $xml->createElement('db', $dbName);
+
         if (is_null($hash)) {
             $hash = $this->_randomToken();
         }
         $hash = $xml->createElement('crypt', $hash);
+
         $root->appendChild($host);
         $root->appendChild($user);
         $root->appendChild($pass);
         $root->appendChild($db);
+
         $root->appendChild($hash);
         $xml->appendChild($root);
         return $xml->save($_SERVER['DOCUMENT_ROOT'] . "/app/etc/db.xml");

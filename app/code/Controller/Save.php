@@ -19,8 +19,10 @@ Class Save
         $post = $_POST;
         $model = new Comment();
         $helper = new Facebook();
+
         $xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] .'/app/etc/db.xml');
         $info = json_decode( json_encode($xml) , 1);
+
         if (!array_key_exists('comment', $post) || !$post['comment']) {
             $response = array(
                 'error' => 'yes',

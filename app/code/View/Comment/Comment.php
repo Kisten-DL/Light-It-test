@@ -38,6 +38,7 @@ Class Comment extends Template
      * @param $userId
      */
 
+
     protected $_crypt;
 
     public function __construct($userId, $crypt = null)
@@ -167,6 +168,7 @@ Class Comment extends Template
             $comment = $data['comment'];
         }
         $html .= '<td><input class="entity_id" type="hidden" value="' . $data['entity_id'] . '" name="entity_id"></input><strong>' . $data['create_at'] . '</strong></td><td><span class="comment-text">' . addslashes($comment) . '</span></td><td><a class="text-right"><span class="pull-right answer">Answer</span></a>';
+
         if ($data['user_id'] == $this->_fbUser) {
             $html .= '<span class="pull-right separator">|</span><a class="text-right"><span class="pull-right delete">Delete</span></a>';
         }
